@@ -27,7 +27,9 @@ func handleError(w http.ResponseWriter, err error) {
 	var recordNotFoundError *api_server_error.RecordNotFoundError
 	if errors.As(err, &recordNotFoundError) {
 		fmt.Printf(err.Error())
+		return
 	}
+	fmt.Println("Unknown Error")
 }
 
 func (s *ServerInterfaceImpl) AddPet(w http.ResponseWriter, r *http.Request) {
@@ -39,6 +41,7 @@ func (s *ServerInterfaceImpl) AddPet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	s.petUsecase.AddPet(r.Context(), &pet)
+	w.Write([]byte("OK"))
 }
 
 func (s *ServerInterfaceImpl) FindPetById(w http.ResponseWriter, r *http.Request, id int64) {
