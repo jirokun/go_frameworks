@@ -2,6 +2,7 @@ package infra
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/jirokun/go_frameworks/chi/api_server_error"
 	"github.com/jirokun/go_frameworks/chi/domain"
@@ -27,5 +28,5 @@ func (p *PetRepositoryImpl) Find(ctx context.Context, id int64) (*domain.Pet, er
 			Tag:  &tag,
 		}, nil
 	}
-	return nil, api_server_error.RecordNotFoundError{}
+	return nil, fmt.Errorf("id=%d: %w", id, api_server_error.ErrRecordNotFound)
 }

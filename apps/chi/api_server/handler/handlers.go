@@ -24,8 +24,9 @@ func NewServerInterfaceImpl(
 }
 
 func handleError(w http.ResponseWriter, err error) {
-	if errors.Is(err, api_server_error.RecordNotFoundError{}) {
-		fmt.Printf(err.Error())
+	if errors.Is(err, api_server_error.ErrRecordNotFound) {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("Not Found"))
 		return
 	}
 	fmt.Println("Unknown Error")

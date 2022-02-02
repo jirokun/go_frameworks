@@ -1,7 +1,7 @@
 package api_server_error
 
-type RecordNotFoundError struct{}
+import (
+	"errors"
+)
 
-func (e RecordNotFoundError) Error() string {
-	return "RecordNotFoundError"
-}
+var ErrRecordNotFound = errors.New("RecordNotFoundError")

@@ -1,13 +1,13 @@
 # note: call scripts from /scripts
-.PHONY: gen-openapi
-gen-openapi:
+.PHONY: chi-gen-openapi
+chi-gen-openapi:
 	oapi-codegen -package handler -generate chi-server,spec api/petstore-expanded.yaml > apps/chi/api_server/handler/handler.gen.go
 	oapi-codegen -package usecase -generate types api/petstore-expanded.yaml > apps/chi/api_server/usecase/types.gen.go
 
-.PHONY: wire
-wire:
+.PHONY: chi-wire
+chi-wire:
 	cd apps/chi/api_server && $$GO_PATH/bin/wire
 
-.PHONY: run 
-run:
+.PHONY: chi-run 
+chi-run:
 	cd apps/chi/api_server && go run .
