@@ -85,6 +85,7 @@ components:
           type: string
         tag:
           type: string    
+          x-omitempty: false
 
     Error:
       type: object

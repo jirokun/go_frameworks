@@ -10,4 +10,5 @@ type PetRepository interface {
 type Pet struct {
 	Id   int
 	Name string
+	Tag  *string
 }

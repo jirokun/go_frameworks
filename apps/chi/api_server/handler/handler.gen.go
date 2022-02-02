@@ -18,32 +18,6 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-// Error defines model for Error.
-type Error struct {
-	Code    int32  `json:"code"`
-	Message string `json:"message"`
-}
-
-// NewPet defines model for NewPet.
-type NewPet struct {
-	Name string  `json:"name"`
-	Tag  *string `json:"tag,omitempty"`
-}
-
-// Pet defines model for Pet.
-type Pet struct {
-	// Embedded struct due to allOf(#/components/schemas/NewPet)
-	NewPet `yaml:",inline"`
-	// Embedded fields due to inline allOf schema
-	Id int64 `json:"id"`
-}
-
-// AddPetJSONBody defines parameters for AddPet.
-type AddPetJSONBody NewPet
-
-// AddPetJSONRequestBody defines body for AddPet for application/json ContentType.
-type AddPetJSONRequestBody AddPetJSONBody
-
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
 
@@ -230,19 +204,19 @@ func HandlerWithOptions(si ServerInterface, options ChiServerOptions) http.Handl
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"H4sIAAAAAAAC/+RUwY7bNhD9FWLaoyqpdtGDTt1kt4CBImt0ewv2MCFHEgOJZDkjOwtD/16QsmN710V6",
-	"yK0n0dTMvKf3nucA2o/BO3LC0ByAdU8j5uNDjD6mQ4g+UBRL+Vp7Q+nZ+jiiQAPWyXoFBchLoOUndRRh",
-	"LmAkZuxy9fElS7Sug3kuINLfk41koPm4zDzXP38d5j99Ji1p1gfab0ne0nE43gIoQLD7NnDuvgV3xMJh",
-	"eGyh+XiAHyO10MAP1Vmv6ihWdeQ2F6/JWfNaqV9/uaHUK1LW3KD0PKcy61q/mOAEdaZII9oBGsBghXD8",
-	"jffYdRRL66E4qgNPy526227UX4QjFDDF1NSLhKaqLnrmAgyxjjaI9Q4auFOMYxgoN0uPoiYmVqgCCYuP",
-	"pJAVOkVfljLxytDoHUtEIdUSyhSJlXVKelKPgVyatC5rxYG0ba3GDFXAYDU5prOtcBdQ96RWZX1FmZuq",
-	"2u/3JebXpY9ddezl6o/N+4cPTw8/rcq67GUcchYojvzYPlHcWU23vrvKJVUyx8pwqdn2+JlQwI4iL6L8",
-	"XNZlnSb7QA6DhQbW+aqAgNJn86skUA6s5+zUta7vI6FkIR3tk5gnhTJaqe6nMCRpUkkSeRj8ngxkyJgV",
-	"25ikkDEpe0uCiOWdNy+nhJBbQhyWSda76jMn8NP/PJ3+S7DnN6nYkiSn0Zj0+EobLpMscaIcbQ4+WZPQ",
-	"VnX93dj9C7Uk5QlziXOL0yDfDXbZizeAJ0dfAmkho+hUMxdLDqqDNXOa3NGNLPxJMkWXsjAxRfUJmYzy",
-	"TqFi67qB1Oa+ULbNOucK44mV86J63JFCrYn5ZETIcbhOye/WpZi8e9mYHNGIIwlFzqvtmsvmXvk251G8",
-	"akl0D2nvJGFR+vNOseaN2cWFgt9ees//92jMBTDF3cmGq408eI1D71madV3Xaf3/EwAA//88oiNnqgcA",
-	"AA==",
+	"H4sIAAAAAAAC/+SUPW/kNhCG/woxScmTFDtIoSq+swMsEJyNON3BxRw5kniQSIYz8tow9N8DUrtn70eQ",
+	"FO5SiUvNx6t3np0XMGGKwZMXhvYF2Aw0YTnepBRSPsQUIiVxVK5NsJSfXUgTCrTgvFxegAZ5jrT+pJ4S",
+	"LBomYsa+RO9esiTne1gWDYn+ml0iC+2XteZr/MP3YuHrNzKSa32m7R3JqRyP07kGGgT703sNTx/C5ISm",
+	"KM/QdjgyHYspFc9J2PXHcbztoP3yAj8m6qCFH+pXD+udgfVO76KPBTt77N4vP59x70iUs2ckPSw5zPku",
+	"rIPxgqZIpAndCC1gdEI4/cpb7HtKlQugd47B/Xqnru426k/CCTTMKScNIrGt6zc5iwZLbJKL4oKHFq4U",
+	"4xRHKskyoKiZiRWqSMISEilkhV7R0xomQVmagmdJKKQ6QpkTsXJeyUDqNpLPlS6rRnEk4zpnsLTSMDpD",
+	"nul11HAV0QykLqrmQDK3db3dbissr6uQ+nqXy/Xvm083n+9vPlxUTTXINBY+KE18291TenSGzn13XULq",
+	"PBwn41vP7nafCRoeKfFqyk9VUzW5cojkMTpo4bJcaYgoQxl+nQ0qEAcukzr09VMilGKkp202c+9Q6Vap",
+	"6zmO2Zockk0ex7AlC6VlKo5tbHbI2szeShCxfAz2eU8I+RXiuFZywdffODff//fz6b+AvZxQcUeSJ43W",
+	"5sd32fCWZEkzFbQ5hjya3O2iad5N3T9Iy1bue644dziP8m5t1115pvHs6SmSEbKK9jGLXjmoX5xdcuWe",
+	"zrDwB8mcfGZhZkrqKzJZFbxCxc73I6nNtVauKz6XCBuIlQ+iBnwkhcYQ834QseBwSMlvzmdMPj5vbEE0",
+	"4URCictqO9SyuVahKzxKUB2JGSDvnWwsyvC6U5w9GbZ+4+C/L72H/zsaiwam9Lgfw8FGHoPBcQgs7WXT",
+	"NHn9/x0AAP//haypvL4HAAA=",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file

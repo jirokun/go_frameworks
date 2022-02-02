@@ -41,9 +41,25 @@ func (s *ServerInterfaceImpl) AddPet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	s.petUsecase.AddPet(r.Context(), &pet)
-	w.Write([]byte("OK"))
+	b, err := json.Marshal(pet)
+	if err != nil {
+		handleError(w, err)
+		return
+	}
+	w.Write(b)
 }
 
 func (s *ServerInterfaceImpl) FindPetById(w http.ResponseWriter, r *http.Request, id int64) {
-	// Implement me
+	m, err := s.petUsecase.FindPetById(r.Context(), id)
+	if err != nil {
+		handleError(w, err)
+		return
+	}
+	b, err := json.Marshal(m)
+	if err != nil {
+		handleError(w, err)
+		return
+	}
+
+	w.Write(b)
 }
