@@ -7,9 +7,9 @@
 package main
 
 import (
-	"github.com/jirokun/go_frameworks/chi/handler"
-	"github.com/jirokun/go_frameworks/chi/infra"
-	"github.com/jirokun/go_frameworks/chi/usecase"
+	"github.com/jirokun/go_frameworks/apps/chi/api_server/handler"
+	"github.com/jirokun/go_frameworks/apps/chi/api_server/infra"
+	"github.com/jirokun/go_frameworks/apps/chi/api_server/usecase"
 )
 
 // Injectors from wire.go:

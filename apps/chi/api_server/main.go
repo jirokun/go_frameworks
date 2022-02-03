@@ -7,7 +7,7 @@ import (
 
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/go-chi/chi/v5"
-	"github.com/jirokun/go_frameworks/chi/handler"
+	"github.com/jirokun/go_frameworks/apps/chi/api_server/handler"
 )
 
 func main() {

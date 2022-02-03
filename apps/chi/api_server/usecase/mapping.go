@@ -1,8 +1,6 @@
 package usecase
 
-import (
-	"github.com/jirokun/go_frameworks/chi/domain"
-)
+import "github.com/jirokun/go_frameworks/apps/chi/api_server/domain"
 
 func mapFromDomainPet(pet *domain.Pet) *Pet {
 	return &Pet{

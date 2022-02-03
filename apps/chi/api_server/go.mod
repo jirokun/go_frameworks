@@ -1,4 +1,4 @@
-module github.com/jirokun/go_frameworks/chi
+module github.com/jirokun/go_frameworks/apps/chi/api_server
 
 go 1.17
 
