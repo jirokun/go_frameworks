@@ -21,16 +21,8 @@ type PetHandler struct {
 func NewPetHandler(
 	petUsecase *usecase.PetUsecase,
 ) *PetHandler {
-	h := PetHandler{
-		petUsecase: petUsecase,
-	}
-	router := chi.NewRouter()
-	router.Get("/pets/{id}", h.FindPetById)
-	router.Post("/pets", h.AddPet)
-
 	return &PetHandler{
 		petUsecase: petUsecase,
-		handlers:   router,
 	}
 }
 
@@ -41,10 +33,6 @@ func handleError(w http.ResponseWriter, err error) {
 		return
 	}
 	fmt.Println("Unknown Error")
-}
-
-func (s *PetHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.handlers.ServeHTTP(w, r)
 }
 
 func (s *PetHandler) AddPet(w http.ResponseWriter, r *http.Request) {

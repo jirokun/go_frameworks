@@ -3,12 +3,18 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/docgen"
 )
 
 func main() {
-	r := chi.NewRouter()
-	petHandler := InitializePetHandler()
-	r.Mount("/", petHandler)
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(":3000", routes())
+}
+
+func newMarkdownOpts() docgen.MarkdownOpts {
+	return docgen.MarkdownOpts{
+		ProjectPath:        "",
+		Intro:              "",
+		ForceRelativeLinks: false,
+		URLMap:             map[string]string{},
+	}
 }
