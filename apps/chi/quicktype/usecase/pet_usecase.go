@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"github.com/jirokun/go_frameworks/apps/chi/quicktype/domain"
+	"github.com/jirokun/go_frameworks/apps/chi/quicktype/usecase/input"
+	"github.com/jirokun/go_frameworks/apps/chi/quicktype/usecase/output"
 )
 
 type PetUsecase struct {
@@ -18,11 +20,11 @@ func NewPetUsecase(
 	}
 }
 
-func (p *PetUsecase) AddPet(ctx context.Context, pet *domain.Pet) error {
-	return p.petRepository.Save(ctx, pet)
+func (p *PetUsecase) AddPet(ctx context.Context, pet *input.NewPet) error {
+	return p.petRepository.Save(ctx, mapToDomainPet(pet))
 }
 
-func (p *PetUsecase) FindPetById(ctx context.Context, id int64) (*Pet, error) {
+func (p *PetUsecase) FindPetById(ctx context.Context, id int64) (*output.Pet, error) {
 	dPet, err := p.petRepository.Find(ctx, id)
 	if err != nil {
 		return nil, err

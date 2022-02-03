@@ -11,3 +11,18 @@ chi-wire:
 .PHONY: chi-run 
 chi-run:
 	cd apps/chi/api_server && go run .
+
+
+
+.PHONY: chi-quicktype-gen-quicktype
+chi-quicktype-gen-quicktype:
+	quicktype -o apps/chi/quicktype/usecase/input/new_pet.gen.go --src-lang typescript --lang go --package input api/quicktype/input/NewPet.ts
+	quicktype -o apps/chi/quicktype/usecase/output/pet.gen.go --src-lang typescript --lang go --package output api/quicktype/output/Pet.ts
+
+.PHONY: chi-quicktype-wire
+chi-quicktype-wire:
+	cd apps/chi/quicktype && $$GO_PATH/bin/wire
+
+.PHONY: chi-quicktype-run 
+chi-quicktype-run:
+	cd apps/chi/quicktype && go run .
