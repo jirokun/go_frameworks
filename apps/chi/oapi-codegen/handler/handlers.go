@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/api_server_error"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/domain"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/usecase"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/api_server_error"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/domain"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/usecase"
 )
 
 type ServerInterfaceImpl struct {

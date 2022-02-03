@@ -1,4 +1,4 @@
-module github.com/jirokun/go_frameworks/apps/chi/api_server
+module github.com/jirokun/go_frameworks/apps/chi/oapi-codegen
 
 go 1.17
 

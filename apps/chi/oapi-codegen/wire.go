@@ -4,9 +4,9 @@ package main
 
 import (
 	"github.com/google/wire"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/handler"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/infra"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/usecase"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/handler"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/infra"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/usecase"
 )
 
 func InitializeServerInterface() *handler.ServerInterfaceImpl {

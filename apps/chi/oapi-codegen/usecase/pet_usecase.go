@@ -3,7 +3,7 @@ package usecase
 import (
 	"context"
 
-	"github.com/jirokun/go_frameworks/apps/chi/quicktype/domain"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/domain"
 )
 
 type PetUsecase struct {

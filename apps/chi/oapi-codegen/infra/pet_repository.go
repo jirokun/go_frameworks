@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/api_server_error"
-	"github.com/jirokun/go_frameworks/apps/chi/api_server/domain"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/api_server_error"
+	"github.com/jirokun/go_frameworks/apps/chi/oapi-codegen/domain"
 )
 
 type PetRepositoryImpl struct {
